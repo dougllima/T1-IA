@@ -1,3 +1,4 @@
+import sys
 
 class Node():
     """A node class for A* Pathfinding"""
@@ -117,9 +118,7 @@ def read_file(file):
         lines = [line.split() for line in text_file]
         return lines
 
-def main():
-
-    maze = read_file('lab.txt')
+def main(maze):
 
     start = find_start(maze)
     print("start position " + str(start))
@@ -131,4 +130,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    
+    if (len(sys.argv)<2):
+        main(read_file('example.txt'))
+    else:
+       main(read_file(sys.argv[1]))
